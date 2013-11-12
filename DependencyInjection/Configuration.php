@@ -24,6 +24,8 @@ class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('mode')->defaultFalse()->end()
                 ->scalarNode('server_ip')->end()
+                ->scalarNode('server_port')->end()
+                ->scalarNode('socket_io_port')->end()
             ->end()
         ;
 

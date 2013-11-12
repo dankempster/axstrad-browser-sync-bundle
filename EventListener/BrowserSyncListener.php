@@ -41,17 +41,29 @@ class BrowserSyncListener implements EventSubscriberInterface
     protected $serverIp;
 
     /**
+     * @var integer
+     */
+    protected $serverPort;
+
+    /**
+     * @var integer
+     */
+    protected $socketIoPort;
+
+    /**
      * Class constructor
      *
      * @param Twig_Environment $twig
      * @param string           $serverIp
      * @param integer          $mode
      */
-    public function __construct(\Twig_Environment $twig, $serverIp, $mode = self::ENABLED)
+    public function __construct(\Twig_Environment $twig, $serverIp, $serverPort, $socketIoPort, $mode = self::ENABLED)
     {
-        $this->twig     = $twig;
-        $this->serverIp = (string) $serverIp;
-        $this->mode     = (integer) $mode;
+        $this->twig         = $twig;
+        $this->serverIp     = (string) $serverIp;
+        $this->serverPort   = (integer) $serverPort;
+        $this->socketIoPort = (integer) $socketIoPort;
+        $this->mode         = (integer) $mode;
     }
 
     /**
@@ -111,7 +123,9 @@ class BrowserSyncListener implements EventSubscriberInterface
             $markup = "\n".str_replace("\n", '', $this->twig->render(
                 '@AxstradBrowserSync/sync_markup.html.twig',
                 array(
-                    'serverIp' => $this->serverIp,
+                    'serverIp'     => $this->serverIp,
+                    'serverPort'   => $this->serverPort,
+                    'socketIoPort' => $this->socketIoPort,
                 )
             ))."\n";
             $content = $substrFunction($content, 0, $pos).$markup.$substrFunction($content, $pos);

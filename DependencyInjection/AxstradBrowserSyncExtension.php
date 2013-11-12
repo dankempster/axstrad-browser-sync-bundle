@@ -36,9 +36,19 @@ class AxstradBrowserSyncExtension extends Extension
             $container->setParameter('axstrad.browser_sync.server_ip', $config['server_ip']);
         }
 
+        if (isset($config['server_port'])) {
+            $container->setParameter('axstrad.browser_sync.server_port', $config['server_port']);
+        }
+
+        if (isset($config['socket_io_port'])) {
+            $container->setParameter('axstrad.browser_sync.socket_io_port', $config['socket_io_port']);
+        }
+
         $container->setParameter('axstrad.browser_sync.mode', $config['mode'] === true
             ? BrowserSyncListener::ENABLED
             : BrowserSyncListener::DISABLED
         );
+
+
     }
 }
