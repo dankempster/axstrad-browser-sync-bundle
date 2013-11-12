@@ -22,7 +22,8 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('server_ip')->cannotBeEmpty()->end()
+                ->scalarNode('mode')->defaultFalse()->end()
+                ->scalarNode('server_ip')->end()
             ->end()
         ;
 

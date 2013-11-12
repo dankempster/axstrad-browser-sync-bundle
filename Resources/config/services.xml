@@ -6,7 +6,7 @@
 
     <parameters>
         <parameter key="axstrad.browser_sync.event_listener.class">Axstrad\BrowserSyncBundle\EventListener\BrowserSyncListener</parameter>
-        <parameter key="axstrad.browser_sync.mode">2</parameter>
+        <parameter key="axstrad.browser_sync.mode">1</parameter>
         <parameter key="axstrad.browser_sync.server_ip">2</parameter>
     </parameters>
 

@@ -2,6 +2,10 @@
 
 namespace Axstrad\BrowserSyncBundle\DependencyInjection;
 
+/**
+ * Dependancies
+ */
+use Axstrad\BrowserSyncBundle\EventListener\BrowserSyncListener;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -31,5 +35,10 @@ class AxstradBrowserSyncExtension extends Extension
         if (isset($config['server_ip'])) {
             $container->setParameter('axstrad.browser_sync.server_ip', $config['server_ip']);
         }
+
+        $container->setParameter('axstrad.browser_sync.mode', $config['mode'] === true
+            ? BrowserSyncListener::ENABLED
+            : BrowserSyncListener::DISABLED
+        );
     }
 }
