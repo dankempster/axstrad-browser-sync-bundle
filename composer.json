@@ -1,0 +1,38 @@
+{
+    "name": "axstrad/browsersyncbundle",
+    "description": "Symfony 2 bundle for use with Grunt-Browser-Sync plugin",
+    "type": "library",
+    "keywords": ["axstrad", "symfony bundle", "grunt", "browser-sync"],
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Dan Kempster",
+            "email": "me@dankempster.co.uk",
+            "homepage": "http://www.dankempster.co.uk",
+            "role": "Developer"
+        }
+    ],
+
+    "support": {
+        "issues": "https://github.com/dankempster/axstrad-browser-sync-bundle/issues",
+        "source": "https://github.com/dankempster/axstrad-browser-sync-bundle"
+    },
+
+    "require": {
+        "php": ">=5.3.3",
+
+        "symfony/config": "2.3.*",
+        "symfony/dependency-injection": "2.3.*",
+        "symfony/event-dispatcher": "2.3.*",
+        "symfony/http-kernel": "2.3.*",
+        "symfony/http-foundation": "2.3.*"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Axstrad\\BrowserSyncBundle": ""
+        }
+    },
+
+    "target-dir": "Axstrad/BrowserSyncBundle"
+}
