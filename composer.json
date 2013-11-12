@@ -1,5 +1,5 @@
 {
-    "name": "axstrad/browsersyncbundle",
+    "name": "axstrad/browser-sync-bundle",
     "description": "Symfony 2 bundle for use with Grunt-Browser-Sync plugin",
     "type": "library",
     "keywords": ["axstrad", "symfony bundle", "grunt", "browser-sync"],
