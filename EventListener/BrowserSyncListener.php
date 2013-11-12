@@ -21,10 +21,32 @@ class BrowserSyncListener implements EventSubscriberInterface
     const DISABLED = 1;
     const ENABLED  = 2;
 
+    /**
+     * @var Twig_Environment
+     */
     protected $twig;
+
+    /**
+     * The bundle's mode.
+     *
+     * Use class costants (DISABLED, ENABLED) when asserting the variable value.
+     *
+     * @var integer
+     */
     protected $mode;
+
+    /**
+     * @var string
+     */
     protected $serverIp;
 
+    /**
+     * Class constructor
+     *
+     * @param Twig_Environment $twig
+     * @param string           $serverIp
+     * @param integer          $mode
+     */
     public function __construct(\Twig_Environment $twig, $serverIp, $mode = self::ENABLED)
     {
         $this->twig     = $twig;
@@ -32,11 +54,18 @@ class BrowserSyncListener implements EventSubscriberInterface
         $this->mode     = (integer) $mode;
     }
 
+    /**
+     * @return boolean
+     */
     public function isEnabled()
     {
         return self::DISABLED !== $this->mode;
     }
 
+    /**
+     * @param  FilterResponseEvent $event
+     * @return void
+     */
     public function onKernelResponse(FilterResponseEvent $event)
     {
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
@@ -63,9 +92,7 @@ class BrowserSyncListener implements EventSubscriberInterface
     }
 
     /**
-     * Injects the web debug toolbar into the given Response.
-     *
-     * @param Response $response A Response instance
+     * @param void
      */
     protected function injectMarkup(Response $response)
     {
@@ -92,6 +119,9 @@ class BrowserSyncListener implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return array(
