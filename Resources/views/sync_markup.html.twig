@@ -1,2 +1,3 @@
-<script src='http://{{ serverIp }}:{{ socketIoPort }}/socket.io/socket.io.js'></script>
-<script src='http://{{ serverIp }}:{{ serverPort }}/browser-sync-client.min.js'></script>
+<script src='//{{ serverIp }}:{{ socketIoPort }}/socket.io/socket.io.js'></script>
+<script>var ___socket___ = io.connect('http://{{ serverIp }}:{{ socketIoPort }}');</script>
+<script src='//{{ serverIp }}:{{ serverPort }}/client/browser-sync-client.min.js'></script>
