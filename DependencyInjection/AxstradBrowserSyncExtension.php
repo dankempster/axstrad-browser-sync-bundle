@@ -29,19 +29,12 @@ class AxstradBrowserSyncExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
 
-        if (empty($config['server_ip']) && isset($_SERVER['SERVER_ADDR'])) {
-            $config['server_ip'] = $_SERVER['SERVER_ADDR'];
-        }
-        if (isset($config['server_ip'])) {
-            $container->setParameter('axstrad.browser_sync.server_ip', $config['server_ip']);
-        }
-
         if (isset($config['server_port'])) {
             $container->setParameter('axstrad.browser_sync.server_port', $config['server_port']);
         }
 
-        if (isset($config['socket_io_port'])) {
-            $container->setParameter('axstrad.browser_sync.socket_io_port', $config['socket_io_port']);
+        if (isset($config['client_version'])) {
+            $container->setParameter('axstrad.browser_sync.client_version', $config['client_version']);
         }
 
         $container->setParameter('axstrad.browser_sync.mode', $config['mode'] === true

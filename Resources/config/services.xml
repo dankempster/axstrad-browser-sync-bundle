@@ -7,18 +7,16 @@
     <parameters>
         <parameter key="axstrad.browser_sync.event_listener.class">Axstrad\BrowserSyncBundle\EventListener\BrowserSyncListener</parameter>
         <parameter key="axstrad.browser_sync.mode">1</parameter>
-        <parameter key="axstrad.browser_sync.server_ip">2</parameter>
-        <parameter key="axstrad.browser_sync.server_port">3001</parameter>
-        <parameter key="axstrad.browser_sync.socket_io_port">3000</parameter>
+        <parameter key="axstrad.browser_sync.socket_port">3000</parameter>
+        <parameter key="axstrad.browser_sync.client_version">1.3.0</parameter>
     </parameters>
 
     <services>
         <service id="axstrad.browser_sync.event_listener" class="%axstrad.browser_sync.event_listener.class%">
             <tag name="kernel.event_subscriber" />
             <argument type="service" id="twig" />
-            <argument>%axstrad.browser_sync.server_ip%</argument>
-            <argument>%axstrad.browser_sync.server_port%</argument>
-            <argument>%axstrad.browser_sync.socket_io_port%</argument>
+            <argument>%axstrad.browser_sync.socket_port%</argument>
+            <argument>%axstrad.browser_sync.client_version%</argument>
             <argument>%axstrad.browser_sync.mode%</argument>
         </service>
     </services>
