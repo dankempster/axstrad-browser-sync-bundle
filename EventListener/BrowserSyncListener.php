@@ -1,9 +1,17 @@
 <?php
-namespace Axstrad\BrowserSyncBundle\EventListener;
-
 /**
- * Dependancies
+ * This file is part of the Axstrad library.
+ *
+ * (c) Dan Kempster <dev@dankempster.co.uk>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Dan Kempster <dev@dankempster.co.uk>
+ * @package Axstrad\BrowserSyncBundle
  */
+namespace Axstrad\Bundle\BrowserSyncBundle\EventListener;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;

@@ -1,15 +1,23 @@
 <?php
-
-namespace Axstrad\BrowserSyncBundle\DependencyInjection;
-
 /**
- * Dependancies
+ * This file is part of the Axstrad library.
+ *
+ * (c) Dan Kempster <dev@dankempster.co.uk>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Dan Kempster <dev@dankempster.co.uk>
+ * @package Axstrad\BrowserSyncBundle
  */
-use Axstrad\BrowserSyncBundle\EventListener\BrowserSyncListener;
+namespace Axstrad\Bundle\BrowserSyncBundle\DependencyInjection;
+
+use Axstrad\Bundle\BrowserSyncBundle\EventListener\BrowserSyncListener;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
+
 
 /**
  * This is the class that loads and manages your bundle configuration
