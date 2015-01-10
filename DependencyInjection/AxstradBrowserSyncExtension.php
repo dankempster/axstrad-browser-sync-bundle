@@ -38,13 +38,8 @@ class AxstradBrowserSyncExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        if (isset($config['server_port'])) {
-            $container->setParameter('axstrad_browser_sync.server_port', $config['server_port']);
-        }
-
-        if (isset($config['client_version'])) {
-            $container->setParameter('axstrad_browser_sync.client_version', $config['client_version']);
-        }
+        $container->setParameter('axstrad_browser_sync.server_port', $config['server_port']);
+        $container->setParameter('axstrad_browser_sync.client_version', $config['client_version']);
 
         // Use the kernel.debug setting to decide if the bundle should be
         // enabled if it hasn't been explicitly enabled/disabled.

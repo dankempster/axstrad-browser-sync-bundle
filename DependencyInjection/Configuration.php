@@ -35,8 +35,8 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('enabled')->defaultNull()->end()
-                ->scalarNode('client_version')->end()
-                ->scalarNode('server_port')->end()
+                ->scalarNode('client_version')->defaultNull()->end()
+                ->scalarNode('server_port')->defaultValue(3000)->end()
             ->end()
         ;
 
