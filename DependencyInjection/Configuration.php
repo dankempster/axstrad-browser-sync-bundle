@@ -10,6 +10,7 @@
  * @author Dan Kempster <dev@dankempster.co.uk>
  * @package Axstrad\BrowserSyncBundle
  */
+
 namespace Axstrad\Bundle\BrowserSyncBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -33,7 +34,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('mode')->defaultFalse()->end()
+                ->scalarNode('enabled')->defaultNull()->end()
                 ->scalarNode('client_version')->end()
                 ->scalarNode('server_port')->end()
             ->end()

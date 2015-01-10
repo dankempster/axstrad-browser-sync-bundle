@@ -1,38 +1,43 @@
 {
     "name": "axstrad/browser-sync-bundle",
-    "description": "Symfony 2 bundle for use with Grunt-Browser-Sync plugin",
-    "type": "library",
-    "keywords": ["axstrad", "symfony bundle", "grunt", "browser-sync"],
-    "license": "GPL-2.0",
+    "description": "A Symfony 2 bundle for use with Browser-Sync.io",
+    "type": "symfony-bundle",
+    "keywords": ["browser-sync"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Dan Kempster",
-            "email": "me@dankempster.co.uk",
-            "homepage": "http://www.dankempster.co.uk",
-            "role": "Developer"
+            "email": "dev@dankempster.co.uk",
+            "homepage": "https://github.com/dankempster"
         }
     ],
 
-    "support": {
-        "issues": "https://github.com/dankempster/axstrad-browser-sync-bundle/issues",
-        "source": "https://github.com/dankempster/axstrad-browser-sync-bundle"
-    },
-
     "require": {
         "php": ">=5.3.3",
+        "axstrad/common": "0.1.*@dev",
+        "symfony/config": "~2.3",
+        "symfony/symfony": "~2.3"
+    },
 
-        "symfony/config": "2.3.*",
-        "symfony/dependency-injection": "2.3.*",
-        "symfony/event-dispatcher": "2.3.*",
-        "symfony/http-kernel": "2.3.*",
-        "symfony/http-foundation": "2.3.*"
+    "require-dev": {
+        "axstrad/use-case-test-bundle": "dev-master"
     },
 
     "autoload": {
-        "psr-0": {
-            "Axstrad\\BrowserSyncBundle": ""
+        "psr-4": {
+            "Axstrad\\Bundle\\BrowserSyncBundle\\": ""
         }
     },
 
-    "target-dir": "Axstrad/BrowserSyncBundle"
+    "minimum-stability": "dev",
+
+    "archive": {
+        "exclude": [
+            "!vendor",
+            ".gitignore",
+            ".travis.yml",
+            "Tests",
+            "phpunit.xml*"
+        ]
+    }
 }

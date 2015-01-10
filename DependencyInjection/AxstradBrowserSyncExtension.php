@@ -10,6 +10,7 @@
  * @author Dan Kempster <dev@dankempster.co.uk>
  * @package Axstrad\BrowserSyncBundle
  */
+
 namespace Axstrad\Bundle\BrowserSyncBundle\DependencyInjection;
 
 use Axstrad\Bundle\BrowserSyncBundle\EventListener\BrowserSyncListener;
@@ -34,22 +35,26 @@ class AxstradBrowserSyncExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('services.xml');
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yml');
 
         if (isset($config['server_port'])) {
-            $container->setParameter('axstrad.browser_sync.server_port', $config['server_port']);
+            $container->setParameter('axstrad_browser_sync.server_port', $config['server_port']);
         }
 
         if (isset($config['client_version'])) {
-            $container->setParameter('axstrad.browser_sync.client_version', $config['client_version']);
+            $container->setParameter('axstrad_browser_sync.client_version', $config['client_version']);
         }
 
-        $container->setParameter('axstrad.browser_sync.mode', $config['mode'] === true
+        // Use the kernel.debug setting to decide if the bundle should be
+        // enabled if it hasn't been explicitly enabled/disabled.
+        if ($config['enabled'] === null) {
+            $config['enabled'] = $container->getParameter('kernel.debug');
+        }
+
+        $container->setParameter('axstrad_browser_sync.enabled', $config['enabled'] === true
             ? BrowserSyncListener::ENABLED
             : BrowserSyncListener::DISABLED
         );
-
-
     }
 }

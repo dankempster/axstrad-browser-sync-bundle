@@ -1,0 +1,4 @@
+app:
+    pattern: /hello/{name}
+    defaults:
+        _controller: AxstradBrowserSyncBundleAppBundle:Default:index

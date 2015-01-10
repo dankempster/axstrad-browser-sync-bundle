@@ -10,8 +10,10 @@
  * @author Dan Kempster <dev@dankempster.co.uk>
  * @package Axstrad\BrowserSyncBundle
  */
+
 namespace Axstrad\Bundle\BrowserSyncBundle\EventListener;
 
+use Axstrad\Bundle\BrowserSyncBundle\Exception\InvalidArgumentException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
@@ -20,7 +22,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 
 /**
- * Axstrad\BrowserSync\EventListener\BrowserSyncListener
+ * Axstrad\Bundle\BrowserSyncBundle\EventListener\BrowserSyncListener
  *
  * BrowserSyncListener injects the Browser Sync markup into the response HTML.
  */
@@ -41,17 +43,17 @@ class BrowserSyncListener implements EventSubscriberInterface
      *
      * @var integer
      */
-    protected $mode;
+    protected $mode = self::ENABLED;
 
     /**
-     * @var string
+     * @var null|string
      */
-    protected $clientVersion;
+    protected $clientVersion = null;
 
     /**
      * @var integer
      */
-    protected $serverPort;
+    protected $serverPort = 3000;
 
     /**
      * Class constructor
@@ -60,12 +62,97 @@ class BrowserSyncListener implements EventSubscriberInterface
      * @param string           $serverIp
      * @param integer          $mode
      */
-    public function __construct(\Twig_Environment $twig, $serverPort, $clientVersion, $mode = self::ENABLED)
+    public function __construct(\Twig_Environment $twig, $mode = self::ENABLED)
     {
         $this->twig = $twig;
-        $this->serverPort = (integer) $serverPort;
-        $this->clientVersion = (string) $clientVersion;
         $this->mode = (integer) $mode;
+    }
+
+    /**
+     * Get clientVersion
+     *
+     * @return string
+     * @see setClientVersion
+     */
+    public function getClientVersion()
+    {
+        return $this->clientVersion;
+    }
+
+    /**
+     * Set clientVersion
+     *
+     * @param  string $clientVersion
+     * @return self
+     * @see getClientVersion
+     */
+    public function setClientVersion($clientVersion)
+    {
+        $this->clientVersion = (string) $clientVersion;
+        return $this;
+    }
+
+    /**
+     * Get serverPort
+     *
+     * @return integer
+     * @see setServerPort
+     */
+    public function getServerPort()
+    {
+        return $this->serverPort;
+    }
+
+    /**
+     * Set serverPort
+     *
+     * @param  integer $serverPort
+     * @return self
+     * @throws InvalidArgumentException If $serverPort is not numeric
+     * @see getServerPort
+     */
+    public function setServerPort($serverPort)
+    {
+        if (!is_numeric($serverPort)) {
+            throw InvalidArgumentException::create("integer", $serverPort);
+        }
+
+        $this->serverPort = (integer) $serverPort;
+
+        return $this;
+    }
+
+    /**
+     * Get mode
+     *
+     * @return integer
+     * @see setMode
+     */
+    public function getMode()
+    {
+        return $this->mode;
+    }
+
+    /**
+     * Set mode
+     *
+     * @param  integer $mode
+     * @return self
+     * @throws InvalidArgumentException If $mode is not numeric
+     * @see getMode
+     */
+    public function setMode($mode)
+    {
+        if (!is_numeric($mode)) {
+            throw InvalidArgumentException::create(
+                "integer",
+                $mode
+            );
+        }
+
+        $this->mode = (integer) $mode;
+
+        return $this;
     }
 
     /**
@@ -73,7 +160,7 @@ class BrowserSyncListener implements EventSubscriberInterface
      */
     public function isEnabled()
     {
-        return self::DISABLED !== $this->mode;
+        return self::ENABLED === $this->mode;
     }
 
     /**
@@ -90,7 +177,7 @@ class BrowserSyncListener implements EventSubscriberInterface
         $request = $event->getRequest();
 
         // don't do anything if...
-        if ($this->mode === self::DISABLED              // bundle is disabled,
+        if (!$this->isEnabled()              // bundle is disabled,
             || $request->isXmlHttpRequest()             // request is XML HTTP,
             || $response->isRedirect()                  // response is redurect,
             || ($response->headers->has('Content-Type') // response content is not HTML, Or
@@ -100,7 +187,6 @@ class BrowserSyncListener implements EventSubscriberInterface
         ) {
             return;
         }
-
 
         $this->injectMarkup($response);
     }

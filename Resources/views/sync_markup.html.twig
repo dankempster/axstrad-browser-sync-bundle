@@ -1,3 +1,7 @@
-<script type='text/javascript'>//<![CDATA[
-document.write("<script async src='//HOST:{{ serverPort }}/browser-sync-client.{{ clientVersion }}.js'><\/script>".replace(/HOST/g, location.hostname));
+{# Markup taken from Browser Sync version 1.9.0 #}
+{% if clientVersion is not empty %}
+    {% set clientVersion = '.' ~ clientVersion %}
+{% endif %}
+<script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='//HOST:{{ serverPort }}/browser-sync/browser-sync-client{{ clientVersion }}.js'><\/script>".replace(/HOST/g, location.hostname).replace(/PORT/g, location.port));
 //]]></script>

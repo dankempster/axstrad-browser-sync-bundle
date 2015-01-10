@@ -1,0 +1,17 @@
+framework:
+    secret: test
+    test:   ~
+    session:
+        storage_id: session.storage.filesystem
+    form:            true
+    csrf_protection: false
+    validation:
+        enabled: true
+    router:
+        resource: %kernel.root_dir%/routing.yml
+    templating:
+        engines: [twig]
+    profiler: { only_exceptions: false }
+
+axstrad_browser_sync:
+    client_version: 1.9.0
