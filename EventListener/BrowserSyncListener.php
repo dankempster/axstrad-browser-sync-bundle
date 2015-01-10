@@ -59,8 +59,7 @@ class BrowserSyncListener implements EventSubscriberInterface
      * Class constructor
      *
      * @param Twig_Environment $twig
-     * @param string           $serverIp
-     * @param integer          $mode
+     * @param integer $mode
      */
     public function __construct(\Twig_Environment $twig, $mode = self::ENABLED)
     {
