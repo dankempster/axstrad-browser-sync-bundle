@@ -19,7 +19,8 @@
     },
 
     "require-dev": {
-        "axstrad/use-case-test-bundle": "dev-master"
+        "axstrad/use-case-test-bundle": "dev-master",
+        "satooshi/php-coveralls": "dev-master"
     },
 
     "autoload": {
