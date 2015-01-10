@@ -19,6 +19,7 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Twig_Environment;
 
 
 /**
@@ -61,7 +62,7 @@ class BrowserSyncListener implements EventSubscriberInterface
      * @param Twig_Environment $twig
      * @param integer $mode
      */
-    public function __construct(\Twig_Environment $twig, $mode = self::ENABLED)
+    public function __construct(Twig_Environment $twig, $mode = self::ENABLED)
     {
         $this->twig = $twig;
         $this->mode = (integer) $mode;
