@@ -113,7 +113,7 @@ class BrowserSyncListener implements EventSubscriberInterface
      */
     public function setServerPort($serverPort)
     {
-        if (!is_numeric($serverPort)) {
+        if ( ! is_numeric($serverPort)) {
             throw InvalidArgumentException::create("integer", $serverPort);
         }
 
@@ -143,7 +143,7 @@ class BrowserSyncListener implements EventSubscriberInterface
      */
     public function setMode($mode)
     {
-        if (!is_numeric($mode)) {
+        if ( ! is_numeric($mode)) {
             throw InvalidArgumentException::create(
                 "integer",
                 $mode
@@ -177,7 +177,7 @@ class BrowserSyncListener implements EventSubscriberInterface
         $request = $event->getRequest();
 
         // don't do anything if...
-        if (!$this->isEnabled()              // bundle is disabled,
+        if ( ! $this->isEnabled()              // bundle is disabled,
             || $request->isXmlHttpRequest()             // request is XML HTTP,
             || $response->isRedirect()                  // response is redurect,
             || ($response->headers->has('Content-Type') // response content is not HTML, Or
@@ -199,7 +199,8 @@ class BrowserSyncListener implements EventSubscriberInterface
         if (function_exists('mb_stripos')) {
             $posrFunction   = 'mb_strripos';
             $substrFunction = 'mb_substr';
-        } else {
+        }
+        else {
             $posrFunction   = 'strripos';
             $substrFunction = 'substr';
         }
