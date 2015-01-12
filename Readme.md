@@ -6,8 +6,8 @@ __NAMESPACE:__ Axstrad\Bundle\BrowserSyncBundle
 ## Introduction
 For use with [Browser Sync](http://www.browsersync.io/).
 
-When your app is in debug mode (or this is explicitly enabled) the Browser Sync
-markup is injected into all HTML responses.
+This bundle will inject the Browser Sync markup into every non-AJAX HTML response sent from
+your app. By default, this will occour when your app is in debug mode.
 
 ## Installation
 
@@ -23,12 +23,11 @@ Add the bundle to your kernel.
 // app/AppKernel.php
 
 if ($this->getEnvironment() == 'dev') {
-    $bundles[] = new Axstrad\Bundle\BrowPHPerSyncBundle\AxstradBrowserSyncBundle();
+    $bundles[] = new Axstrad\Bundle\BrowserSyncBundle\AxstradBrowserSyncBundle();
 }
 ```
-The above assumes you only want browser syncing during development.
 
-That's it! The browser sync markup will be inected into all HTML request so long as the app
+That's it! The browser sync markup will be inected into all HTML requests so long as your app
 is in debug mode.
 
 ## Configuration Reference
@@ -45,7 +44,7 @@ axstrad_browser_sync:
 __enabled__ (Boolean): Enable (true) or disable (false) the bundle. If null
 the value of the kernel's debug parameter is inherited.
 
-__server_port__ (Integer): Set what server port to use within the Browser Sync markup.
+__server_port__ (Integer): Set the server port to use within the Browser Sync markup.
 
-__client_version__ (String): The installed version of Browser Sync. If specified
-it's used as part of the Browser Sync client script URL.
+__client_version__ (String): Your installed version of Browser Sync, you may leave this blank.
+
