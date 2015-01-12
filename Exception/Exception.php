@@ -11,14 +11,12 @@
  * @package Axstrad\BrowserSyncBundle
  */
 
-namespace Axstrad\Bundle\BrowserSyncBundle;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
+namespace Axstrad\Bundle\BrowserSyncBundle\Exception;
 
 /**
- * Axstrad\Bundle\BrowserSyncBundle\AxstradBrowserSyncBundle
+ * Axstrad\Bundle\BrowserSyncBundle\Exception\Exception
  */
-class AxstradBrowserSyncBundle extends Bundle
+interface Exception
 {
+
 }

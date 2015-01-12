@@ -11,14 +11,15 @@
  * @package Axstrad\BrowserSyncBundle
  */
 
-namespace Axstrad\Bundle\BrowserSyncBundle;
+namespace Axstrad\Bundle\BrowserSyncBundle\Exception;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
-
+use Axstrad\Common\Exception\InvalidArgumentException as BaseException;
 
 /**
- * Axstrad\Bundle\BrowserSyncBundle\AxstradBrowserSyncBundle
+ * Axstrad\Bundle\BrowserSyncBundle\Exception\InvalidArgumentException
  */
-class AxstradBrowserSyncBundle extends Bundle
+class InvalidArgumentException extends BaseException implements
+    Exception
 {
+
 }

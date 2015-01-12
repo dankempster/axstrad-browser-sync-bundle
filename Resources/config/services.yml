@@ -1,0 +1,17 @@
+parameters:
+    axstrad_browser_sync.event_listener.class: Axstrad\Bundle\BrowserSyncBundle\EventListener\BrowserSyncListener
+    axstrad_browser_sync.mode: 2
+    axstrad_browser_sync.socket_port: 3000
+    axstrad_browser_sync.client_version: ~
+
+services:
+    axstrad_browser_sync.event_listener:
+        class: %axstrad_browser_sync.event_listener.class%
+        arguments:
+            - @twig
+            - %axstrad_browser_sync.mode%
+        calls:
+            - [ setClientVersion, [%axstrad_browser_sync.client_version%] ]
+            - [ setServerPort, [%axstrad_browser_sync.socket_port%] ]
+        tags:
+            - { name: kernel.event_subscriber }

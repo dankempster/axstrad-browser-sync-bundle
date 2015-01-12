@@ -1,0 +1,37 @@
+language: php
+php:
+  - 5.4
+  - hhvm
+env:
+  - SYMFONY_VERSION="2.3.*"
+  - SYMFONY_VERSION="2.4.*"
+  - SYMFONY_VERSION="2.5.*"
+  - SYMFONY_VERSION="2.6.*"
+before_script:
+  - composer self-update
+  - composer require symfony/symfony:${SYMFONY_VERSION} --prefer-dist
+script:
+  - php ./vendor/bin/phpunit --coverage-clover=build/logs/clover.xml
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
+  - php ./vendor/bin/coveralls -v
+matrix:
+  include:
+    - php: 5.6
+      env: SYMFONY_VERSION="2.7.*"
+
+  allow_failures:
+    - env: SYMFONY_VERSION="2.7.*"
+    - php: hhvm
+
+  fast_finish: true
+
+notifications:
+  email:
+    - dev@dankempster.co.uk
+
+branches:
+  only:
+    - develop
+    - master

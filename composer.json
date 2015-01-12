@@ -1,0 +1,48 @@
+{
+    "name": "axstrad/browser-sync-bundle",
+    "description": "A Symfony 2 bundle for use with Browser-Sync.io",
+    "type": "symfony-bundle",
+    "keywords": ["browser-sync"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dan Kempster",
+            "email": "dev@dankempster.co.uk",
+            "homepage": "https://github.com/dankempster"
+        }
+    ],
+
+    "require": {
+        "php": ">=5.3.3",
+        "axstrad/common": "0.1.*@dev",
+        "symfony/symfony": "~2.3"
+    },
+
+    "require-dev": {
+        "axstrad/use-case-test-bundle": "dev-master",
+        "satooshi/php-coveralls": "dev-master"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Axstrad\\Bundle\\BrowserSyncBundle\\": ""
+        }
+    },
+
+    "minimum-stability": "dev",
+
+    "archive": {
+        "exclude": [
+            "!vendor",
+            ".gitignore",
+            ".travis.yml",
+            "Tests",
+            "phpunit.xml*"
+        ]
+    },
+
+    "branch-alias": {
+        "dev-master": "1.0.x-dev",
+        "dev-develop": "1.1.x-dev"
+    }
+}
