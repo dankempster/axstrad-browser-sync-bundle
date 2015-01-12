@@ -1,3 +1,5 @@
+[![Latest Stable Version](https://poser.pugx.org/axstrad/browser-sync-bundle/v/stable.svg)](https://packagist.org/packages/axstrad/browser-sync-bundle) [![Total Downloads](https://poser.pugx.org/axstrad/browser-sync-bundle/downloads.svg)](https://packagist.org/packages/axstrad/browser-sync-bundle) [![Latest Unstable Version](https://poser.pugx.org/axstrad/browser-sync-bundle/v/unstable.svg)](https://packagist.org/packages/axstrad/browser-sync-bundle) [![License](https://poser.pugx.org/axstrad/browser-sync-bundle/license.svg)](https://packagist.org/packages/axstrad/browser-sync-bundle)
+
 # AxstradBrowserSyncBundle
 
 __NAMESPACE:__ Axstrad\Bundle\BrowserSyncBundle
