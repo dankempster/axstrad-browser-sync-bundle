@@ -14,12 +14,13 @@
 
     "require": {
         "php": ">=5.3.3",
-        "axstrad/common": "0.1.*@dev",
+        "axstrad/common": ">=0.1",
         "symfony/symfony": "~2.3"
     },
 
     "require-dev": {
         "axstrad/use-case-test-bundle": "dev-master",
+        "phpunit/phpunit": "~4.1@stable",
         "satooshi/php-coveralls": "dev-master"
     },
 
