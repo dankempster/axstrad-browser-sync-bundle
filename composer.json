@@ -20,6 +20,7 @@
 
     "require-dev": {
         "axstrad/use-case-test-bundle": "dev-master",
+        "phpunit/phpunit": "~4.1@stable",
         "satooshi/php-coveralls": "dev-master"
     },
 
